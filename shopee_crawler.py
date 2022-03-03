@@ -37,14 +37,14 @@ class ShopeeCrawler:
         self.driver.close()
     
     def _get_next_page_button(self) -> WebElement:
-        return self.driver.find_element(By.CLASS_NAME,'')
+        return self.driver.find_element(By.CLASS_NAME,'shopee-icon-button--right')
     
     def search(self, region: str, search_txt: str) -> None:
         assert region in DOMAIN_MAP
         domain = DOMAIN_MAP.get(region)
         search_txt_URLfied = urllib.parse.quote(search_txt)
         url = f'https://shopee{domain}/search?keyword={search_txt_URLfied}'
-        self.driver.get(url)        
+        self.driver.get(url)
     
     def next_page(self) -> None:
         next_page_btn = self._get_next_page_button()
